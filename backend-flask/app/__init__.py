@@ -25,10 +25,8 @@ def create_app():
     bcrypt.init_app(app)
     jwt.init_app(app)
 
-    from app.db import init_pool
-    with app.app_context():
-        init_pool()
-
+# DB se conecta lazy en la primera request, no al arrancar
+    
     from app.routes.auth import auth_bp
     from app.routes.envios import envios_bp
     from app.routes.tracking import tracking_bp
