@@ -23,6 +23,7 @@ def init_pool():
 
 
 def get_connection():
+    global _pool
     if _pool is None:
         init_pool()
     return _pool.get_connection()
